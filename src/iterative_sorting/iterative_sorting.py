@@ -1,4 +1,4 @@
-# TO-DO: Complete the selection_sort() function below
+# # TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
@@ -16,21 +16,52 @@ def selection_sort(arr):
         # when the nested loop finishes swap indexes of smallest index
         if smallest_index != i:
             # important to note order of swap order of operation
-            arr[smallest_index] = arr[i]
-            arr[i] = arr[smallest_index]
-            
+            arr[smallest_index], arr[i] = arr[i], arr[smallest_index]            
     return arr
 
-array = [4,7,22,2,8,0,9,11,2,1]
-print(selection_sort(array))
+test_arr = [4,7,22,2,8,9,11,1,3]
+print(selection_sort(test_arr))
 
-# TO-DO:  implement the Bubble Sort function below
-# def bubble_sort(arr):
-#     # Your code here
+# # TO-DO:  implement the Bubble Sort function below
+def bubble_sort(arr):
+    # lets initialize a local variable to False
+    is_sorted = False
+
+    while is_sorted == False:
+        is_sorted = True
+                
+        for i in range(0, len(arr) - 1):
+            left_value = arr[i]
+            right_value = arr[i + 1]
+
+            if left_value > right_value:
+                is_sorted = False
+                # here is where the swapping happens
+                arr[i] = right_value
+                arr[i+1] = left_value
+
+    return arr
+
+def bubble_sort_2(arr):
+    # a condenced version of the above bubble sort
+    # lets initialize a local variable to False
+    is_sorted = False
+
+    while is_sorted == False:
+        is_sorted = True
+       
+        for i in range(0, len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                is_sorted = False
+                # here is where the swapping happens
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    return arr
 
 
-#     return arr
-
+print(bubble_sort_2(test_arr))
+test_arr[0] = 99
+test_arr[0 + 1] = 88
+print(test_arr) 
 # '''
 # STRETCH: implement the Counting Sort function below
 
